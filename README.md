@@ -55,7 +55,7 @@ Keys:
 Example:
 ```
 $CoreIndex = @(
-    @{
+	@{
 		"dll"           = "snes9x2010_libretro.dll"
 		"rom_path"      = "C:\Games\ROMs\SNES"
 		"extensions"    = ".smc,.sfc"
