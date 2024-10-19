@@ -118,24 +118,6 @@ function Handle-Explorer {
     }
 }
 
-function Cull-Roms {
-    param (
-        $Playlist,
-        $Count
-    )
-
-    $CulledList = New-Object System.Collections.Generic.List[System.Object]
-
-    $i = 0
-    foreach ($rom in $Playlist) {
-        if (i -ge $count) { break }
-        $CulledList.Add($rom)
-        $i++
-    }
-
-    return $CulledList
-}
-
 function Check-MaxRuntime {
     param (
         $Stopwatch,
