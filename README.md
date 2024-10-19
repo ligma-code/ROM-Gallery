@@ -140,7 +140,7 @@ With difficulty! You need to terminate the script from the PowerShell terminal b
 See above.
 
 ### PowerShell error: '*.\rom-gallery.ps1 cannot be loaded because running scripts is disabled on this system*'
-Running unsigned PowerShell scripts is disabled on Windows by default. The easiest way to allow the script to run is to open an administrative PowerShell prompt and run `Set-ExecutionPolicy Unrestricted`. Note this may make your system vulnerable to malicious scripts.
+Running unsigned PowerShell scripts is disabled on Windows by default. The easiest way to allow the script to run is to open an administrative PowerShell prompt and run `Set-ExecutionPolicy bypass`. Note this may make your system vulnerable to malicious scripts.
 
 See this Microsoft documentation for more information: [About Execution Policies](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-5.1)
 
