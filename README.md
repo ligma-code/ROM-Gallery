@@ -19,7 +19,7 @@ The QUIT network command allows the script to close RetroArch gracefully instead
 This assumes you already have RetroArch installed and configured with cores.
 
 1. Download the `rom-gallery.ps1` script
-2. Set `network_cmd_enable = "true"` in \<RetroArch install dir\>\retroarch.cfg
+2. Set `network_cmd_enable = "true"` in your retroarch config file - *\<RetroArch install dir\>\retroarch.cfg* by default
 3. Set these static variables in the script (refer to [Script configuration](https://github.com/ligma-code/ROM-Gallery/new/main?filename=README.md#script-configuration) below for more details):
 	- `$CoreIndex`
 	- `$RetroarchPath`
@@ -44,15 +44,15 @@ This is an array of one or more hash tables, one hash table (i.e. pair of "{ }" 
 
 The dll key is mandatory for each core, but usage of the other keys depends on whether you wish to have the script search for ROM files or import a playlist file. See [ROM selection](https://github.com/ligma-code/ROM-Gallery/new/main?filename=README.md#rom-selection) for more information about these options.
 
-Keys:
+| Key | Description |
+| :--- | :--- |
+| `dll` | The core DLL that corresponds to the Libretro system core. You can find the core DLL filenames under your *\<RetroArch install dir\>\cores* folder. |
+| `rom_path` | Full path to ROM folder to search. Search is recursive. |
+| `extensions` | Comma-separated list of ROM file extensions for the core. Must be included when using `rom_path` key. |
+| `playlist` | Full path to custom playlist file. `rom_path` and `extensions` keys will be ignored if this key is included. Refer to [ROM selection](https://github.com/ligma-code/ROM-Gallery/new/main?filename=README.md#rom-selection) for more details. |
+| `custom_cfg` | (Optional) Custom RetroArch configuration file for the core. If not provided, the default retroarch.cfg config is used. |
 
-- `dll`: the core DLL that corresponds to the Libretro system core. You can find the core DLL filenames under your \<RetroArch install dir\>\cores folder.
-- `rom_path`: full path to ROM folder to search. Search is recursive.
-- `extensions`: comma-separated list of ROM file extensions for the core. Must be included when using rom_path key.
-- `playlist`: full path to custom playlist file. `rom_path` and `extensions` keys will be ignored if this key is included. Refer to [ROM selection](https://github.com/ligma-code/ROM-Gallery/new/main?filename=README.md#rom-selection) for more details.
-- `custom_cfg` : (optional) custom RetroArch configuration file for the core. If not provided, the default retroarch.cfg config is used.
-
-Example:
+*Example:*
 ```
 $CoreIndex = @(
 	@{
@@ -75,7 +75,7 @@ $CoreIndex = @(
 
 ### Other static variables
 | Variable | Description |
-| ---------- | ----------- |
+| :--- | :--- |
 | `$RetroarchExe` | Path to retroarch.exe. This should not need to be modified. |
 | `$CorePath` | Path to cores subfolder. This should not need to be modified. |
 | `$CycleTime` | The interval in [int] seconds between cycling ROMs. |
