@@ -145,14 +145,14 @@ Running unsigned PowerShell scripts is disabled on Windows by default. The easie
 See this Microsoft documentation for more information: [About Execution Policies](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-5.1)
 
 ### RetroArch fails to start, or starts but then closes/crashes straight away
-There could be any number of reasons why RetroArch is doing this. You can manually check whether the ROM can be invoked on the command-line by using this syntax:
+There could be any number of reasons why RetroArch is doing this. You can manually check whether a ROM can be invoked on the command-line by using this syntax:
 
 `retroarch.exe -L <path to core DLL> <path to ROM file>`
 
 *Example:*
 ```
 PS C:\Users\ligma> cd C:\RetroArch-Win64
-PS C:\ROM-Gallery\RetroArch-Win64> .\retroarch.exe -L .\cores\mupen64plus_next_libretro.dll "C:\Games\ROMs\Superman 64.n64`
+PS C:\RetroArch-Win64> .\retroarch.exe -L .\cores\mupen64plus_next_libretro.dll "C:\Games\ROMs\Superman 64.n64"`
 ```
 
 The best way to troubleshoot RetroArch issues is to enable verbose logging, which will log what's happening and any errors encountered. This can be enabled in the RetroArch menu under Settings → Logging → Logging Verbosity → On, and additionally you might want to enable Log To File on the same page.
@@ -164,10 +164,10 @@ See above.
 Double-check `rom_path` and `extensions` keys are set correctly inside `$CoreIndex`. Refer to [ROM selection](https://github.com/ligma-code/ROM-Gallery/new/main?filename=README.md#rom-selection) for more details.
 
 ### The ROM starts then pauses
-The RetroArch window may have lost focus and paused itself. You can disable this setting under Settings → User Interface → Pause Content When Not Active → No.
+The RetroArch window may have lost focus and paused itself. You can disable this setting by going to Settings → User Interface → Pause Content When Not Active → No.
 
-### After a ROM stops it takes too long to start the next one.
-This is RetroArch taking a long time to launch the ROM. Disabling complex shaders or using a faster PC will reduce the load time. Additionally, large ROM files, or loading ROMs over a slow network connection may just take longer.
+### After a ROM stops it takes a long time to start the next one.
+This is RetroArch taking a long time to launch the next ROM. Disabling complex shaders or using a faster PC will reduce the load time. Additionally, large ROM files or loading ROMs over a slow network connection may just take longer.
 
 ### The playlist is favouring ROMs from one core over another
 Setting `$Shuffle` to `$True` will mix the ROMs into random order. If the playlist has more ROMs for one core than another, it will play that core's ROMs more often due to mathematical probability.
@@ -177,15 +177,15 @@ You can equalise the number of ROMs each system has in the playlist by setting `
 ### I have multiple monitors. Can I change the monitor on which RetroArch opens?
 RetroArch does not provide a method for changing the target screen in fullscreen mode; it will always open on the Main display per Windows Display Settings.
 
-If you are happy to run in windowed mode (set `$Fullscreen` to `$False` in the script) then you can enable the Remember Window Position And Size setting in RetroArch and place the window on the target screen. This can be enabled under Settings → Video → Windowed Mode → Remember Window Position And Size → On.
+If you are happy to run in windowed mode (set `$Fullscreen` to `$False` in the script) then you can enable the Remember Window Position And Size setting in RetroArch and place the window on the target screen. This can be enabled by going to Settings → Video → Windowed Mode → Remember Window Position And Size → On.
 
 ## Compatibility
-I see no reason why the script wouldn't work any recent version of RetroArch and Windows. But for reference the script has been tested on:
+I see no reason why the script wouldn't work on any recent versions of RetroArch and Windows. But for reference the script has been tested on:
 - Windows 10 and Windows 11
 - PowerShell versions 5.1 and 7
 - RetroArch v1.19.1 64-bit
 
-PowerShell can be installed on MacOS and some Linux distributions but the script will not work without some tweaks.
+PowerShell can be installed on MacOS and some Linux distributions so the script is theoretically compatible, but it will not work without some tweaks.
 
 ## Feedback
 When I started writing the script, I thought I would just knock something up in a couple of hours and call it a day. Then I had an idea for a little feature to add, and then another, and then another... and now I've spent way too long on this and I need to stop. Now that it's become a bit more than the quick and dirty script I originally intended, I figure it's decent enough to stick on GitHub and maybe others will find it useful too.
