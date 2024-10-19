@@ -195,8 +195,8 @@ That being said, the script does what I want it to do, and I don’t have plans 
 If you have ideas for features or improvements, feel free to duplicate the project and make it your own.
 
 ## Acknowledgments
-Thanks to the [MiSTer_SAM](https://github.com/mrchrisster/MiSTer_SAM) project and its contributors for providing the inspiration for the ROM-Gallery script. If you have a MiSTer FPGA, MiSTer Super Attract Mode performs the same function but way better and with more features than my dodgy little PS script. I made this script because although I own a MiSTer
-I wanted to run the gallery function on a device I can keep running in-place on a permanent basis, and the MiSTer is simply too good to waste like that. Better to run RetroArch on an old Windows PC and keep the MiSTer for playing games!
+Thanks to the [MiSTer_SAM](https://github.com/mrchrisster/MiSTer_SAM) project and its contributors for providing the inspiration for the ROM-Gallery script. MiSTer Super Attract Mode performs the same gallery function but way better and with more features than my amateur little PS script. I made ROM-Gallery because although I own a MiSTer,
+I wanted to run the gallery function on a device I can leave in-place on a permanent basis. The MiSTer is simply too good to leave showing game demos all day - better to use RetroArch and an old PC, and keep the MiSTer for playing games!
 
 ## Release history
 - 19 OCT 2024 - Initial release
