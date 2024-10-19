@@ -11,11 +11,12 @@ The intended use case is to cycle through different retro games every few minute
 This assumes you already have RetroArch installed and configured with cores.
 
 1. Download the `rom-gallery.ps1` script
-2. Set `network_cmd_enable = "true"` in your retroarch config file - *\<RetroArch install dir\>\retroarch.cfg* by default
-3. Set these static variables in the script (refer to [Script configuration](https://github.com/ligma-code/ROM-Gallery/new/main?filename=README.md#script-configuration) below for more details):
-	- `$CoreIndex`
+2. Set these static variables in the script (refer to [Script configuration](https://github.com/ligma-code/ROM-Gallery/new/main?filename=README.md#script-configuration) below for more details):
 	- `$RetroarchFolder`
-4. Open PowerShell and navigate to the script folder, then run `rom-gallery.ps1`
+	- `$CoreIndex`
+3. Prevent RetroArch from pausing when it is not the active window. You can set this by going to Settings → User Interface → Pause Content When Not Active → No.
+4. Set `network_cmd_enable = "true"` in your retroarch config file, located at *\<RetroArch install dir\>\retroarch.cfg* by default
+5. Open PowerShell and navigate to the script folder, then run `rom-gallery.ps1`
 
 Note unsigned PowerShell scripts must be allowed. Do a web search for 'powershell set execution policy' for more info.
 
