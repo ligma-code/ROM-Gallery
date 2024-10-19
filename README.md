@@ -15,7 +15,7 @@ This assumes you already have RetroArch installed and configured with cores.
 	- `$RetroarchFolder`
 	- `$CoreIndex`
 3. Prevent RetroArch from pausing when it is not the active window. You can set this by going to Settings → User Interface → Pause Content When Not Active → No.
-4. Set `network_cmd_enable = "true"` in your retroarch config file, located at *\<RetroArch install dir\>\retroarch.cfg* by default
+4. Set `network_cmd_enable = "true"` in your RetroArch config file, located at *\<RetroArch install dir\>\retroarch.cfg* by default
 5. Open PowerShell and navigate to the script folder, then run `rom-gallery.ps1`
 
 Note unsigned PowerShell scripts must be allowed. Do a web search for 'powershell set execution policy' for more info.
