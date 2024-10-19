@@ -118,8 +118,8 @@ If you include the `playlist` key, the `rom_path` and `extensions` keys will be 
 You can make transitions between ROMs appear more seamless with these configuration settings:
 - Disable RetroArch on-screen notifications: Settings → User Interface → On-Screen Notifications → Off
 - Set `$HideTerminal` to `$True` to hide the PowerShell terminal
-- Set `$KillExplorer` to `$True` to remove the desktop background, icons and taskbar.
-Note that if you do this you may have to open Task Manager (Ctrl + Shift + Escape) to kill the script and restart explorer.t
+- Set `$KillExplorer` to `$True` to terminate explorer.exe, which removes the desktop background, icons and taskbar.
+Note that if you do this you may have to open Task Manager (Ctrl + Shift + Escape) to kill the script and restart explorer.exe
 
 ### Scheduled task
 If you have a dedicated PC on which to run the script, you can invoke it automatically on login with a scheduled task for a fully hands-off experience. See this guide for details on running PowerShell scripts via Task Scheduler: [How to Automate PowerShell Scripts with Task Scheduler](https://blog.netwrix.com/how-to-automate-powershell-scripts-with-task-scheduler)
@@ -136,6 +136,9 @@ Quit:   `retroarch.exe --command QUIT`
 The QUIT network command allows the script to close RetroArch gracefully instead of just terminating the process. Note that network commands are disabled by default and must be enabled in the RetroArch configuration file. The script will force-terminate RetroArch if the QUIT command doesn't succeed.
 
 ## Troubleshooting
+### The ROM starts then pauses
+The RetroArch window may have lost focus and paused itself. You can disable this setting by going to Settings → User Interface → Pause Content When Not Active → No.
+
 ### How do I stop the script while it's running?
 With difficulty! You need to terminate the script from the PowerShell terminal by pressing Ctrl + C, but PowerShell will not see this keystroke if another application has focus. If RetroArch is running you need to quit it or switch windows (Alt + Tab) to bring up the PowerShell terminal. Alternatively, you can kill the PowerShell process from Task Manager (Ctrl + Shift + Escape).
 
@@ -165,9 +168,6 @@ See above.
 
 ### Script reports "Found 0 ROMs"
 Double-check `rom_path` and `extensions` keys are set correctly inside `$CoreIndex`. Refer to [ROM selection](https://github.com/ligma-code/ROM-Gallery/new/main?filename=README.md#rom-selection) for more details.
-
-### The ROM starts then pauses
-The RetroArch window may have lost focus and paused itself. You can disable this setting by going to Settings → User Interface → Pause Content When Not Active → No.
 
 ### After a ROM stops it takes a long time to start the next one.
 This is RetroArch taking a long time to launch the next ROM. Disabling complex shaders or using a faster PC will reduce the load time. Additionally, large ROM files or loading ROMs over a slow network connection may just take longer.
