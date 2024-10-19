@@ -6,14 +6,6 @@ ROM-Gallery is a PowerShell script that automatically cycles through ROMs in Ret
 The intended use case is to cycle through different retro games every few minutes, showcasing the demo mode or attract mode screens and iconic pixel art. Get it going on a spare screen and Windows PC, then let it display an ever-changing gallery of retro classics.
 
 ![alt text](https://github.com/ligma-code/ROM-Gallery/blob/main/image-rom-gallery-terminal.png)
-## How does it work?
-The script is quite basic in its core function. It builds a playlist of ROM files, then cycles through the ROMs by running a couple of commands on the RetroArch command-line interface and network command interface. RetroArch does not provide any command-line options to switch ROM or core while it's already running, so the script starts and quits RetroArch for each ROM.
-
-Start:  `retroarch.exe -L <core DLL> <path to ROM> -F`
-
-Quit:   `retroarch.exe --command QUIT`
-
-The QUIT network command allows the script to close RetroArch gracefully instead of just terminating the process. Note that network commands are disabled by default and must be enabled in the RetroArch configuration file. The script will force-terminate RetroArch if the QUIT command doesn't succeed.
 
 ## I just want to get it running!
 This assumes you already have RetroArch installed and configured with cores.
@@ -22,7 +14,7 @@ This assumes you already have RetroArch installed and configured with cores.
 2. Set `network_cmd_enable = "true"` in your retroarch config file - *\<RetroArch install dir\>\retroarch.cfg* by default
 3. Set these static variables in the script (refer to [Script configuration](https://github.com/ligma-code/ROM-Gallery/new/main?filename=README.md#script-configuration) below for more details):
 	- `$CoreIndex`
-	- `$RetroarchPath`
+	- `$RetroarchFolder`
 4. Open PowerShell and navigate to the script folder, then run `rom-gallery.ps1`
 
 Note unsigned PowerShell scripts must be allowed. Do a web search for 'powershell set execution policy' for more info.
@@ -30,14 +22,14 @@ Note unsigned PowerShell scripts must be allowed. Do a web search for 'powershel
 ## Script configuration
 This section provides information on the static variables that can be configured to customise the script to your requirements.
 
-`$RetroarchPath` and `$CoreIndex` **must** be configured for your particular setup. The other variables' default values can be left alone or customised to your taste.
+`$RetroarchFolder` and `$CoreIndex` **must** be configured for your particular setup. The other variables' default values can be left alone or customised to your taste.
 
-#### $RetroarchPath
+#### $RetroarchFolder
 Full path to your RetroArch install folder.
 
 *Example:*
 
-`$RetroarchPath = "C:\RetroArch-Win64"`
+`$RetroarchFolder = "C:\RetroArch-Win64"`
 
 #### $CoreIndex
 This is an array of one or more hash tables, one hash table (i.e. pair of "{ }" curly brackets) per core/system. Key-value pairs define which Libretro core file to use and where to find its ROM files.
@@ -68,7 +60,7 @@ $CoreIndex = @(
 	@{
 		"dll"           = "mame_libretro.dll"
 		"playlist"      = "C:\Games\ROMs\MAME\mame_playlist.txt"
-		"custom_cfg"    = "$RetroarchPath\retroarch_mame.cfg"
+		"custom_cfg"    = "$RetroarchFolder\retroarch_mame.cfg"
 	}
 )
 ```
@@ -131,6 +123,17 @@ Note that if you do this you may have to open Task Manager (Ctrl + Shift + Escap
 
 ### Scheduled task
 If you have a dedicated PC on which to run the script, you can invoke it automatically on login with a scheduled task for a fully hands-off experience. See this guide for details on running PowerShell scripts via Task Scheduler: [How to Automate PowerShell Scripts with Task Scheduler](https://blog.netwrix.com/how-to-automate-powershell-scripts-with-task-scheduler)
+
+## How does it work?
+The script is quite basic in its core function. It builds a playlist of ROM files, then cycles through the ROMs by running a couple of commands on the RetroArch command-line interface and network command interface. RetroArch does not provide any command-line options to switch ROM or core while it's already running, so the script starts and quits RetroArch for each ROM.
+
+RetroArch commands that the script invokes:
+
+Start:  `retroarch.exe -L <core DLL> <path to ROM> -F`
+
+Quit:   `retroarch.exe --command QUIT`
+
+The QUIT network command allows the script to close RetroArch gracefully instead of just terminating the process. Note that network commands are disabled by default and must be enabled in the RetroArch configuration file. The script will force-terminate RetroArch if the QUIT command doesn't succeed.
 
 ## Troubleshooting
 ### How do I stop the script while it's running?
